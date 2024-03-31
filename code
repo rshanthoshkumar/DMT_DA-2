@@ -1,0 +1,19 @@
+mydata<-read.csv("D:/VIT/Semester/8th sem/subjects/SWE2009/Assignments/archive/le.csv",header=TRUE)
+
+mydata <- mydata[, -1]
+
+mydata <- na.omit(mydata)
+
+set.seed(240)
+mydata<-is.na(mydata)
+
+# K-means clustering
+kmeans_model <- kmeans(mydata, centers = 1, nstart = 20)
+kmeans_clusters <- kmeans_model$cluster
+print(kmeans_clusters)
+
+
+# Hierarchical clustering (Agglomerative)
+hc_model <- hclust(dist(mydata))
+hc_clusters <- cutree(hc_model, k = 3)
+print(hc_clusters)
